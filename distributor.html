@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Distributor | BlockVerify</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        Block<span>Verify</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="manufacturer.html">
+            Manufacturer
+        </a>
+
+        <a href="distributor.html"
+           class="active">
+
+            Distributor
+
+        </a>
+
+        <a href="verify.html">
+            Verify Product
+        </a>
+
+    </nav>
+
+    <button
+        id="connectWallet"
+        class="nav-button">
+
+        Connect Wallet
+
+    </button>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="page-container">
+
+
+    <div class="page-title">
+
+        <h1>
+            Distributor Dashboard
+        </h1>
+
+        <p>
+            Track products, transfer ownership and
+            manage product status.
+        </p>
+
+    </div>
+
+
+    <!-- PRODUCT SEARCH -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Product Information
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Product ID
+            </label>
+
+            <input
+                type="number"
+                id="productId"
+                value="1"
+                min="1"
+                placeholder="Enter Product ID">
+
+        </div>
+
+
+        <button
+            id="viewProduct"
+            class="primary-button">
+
+            View Product
+
+        </button>
+
+    </section>
+
+
+    <!-- PRODUCT DETAILS -->
+
+    <section
+        id="productDetailsContainer"
+        class="dashboard-card"
+        style="display:none;">
+
+        <div class="product-details-layout">
+
+
+            <!-- LEFT SIDE -->
+
+            <div class="product-information">
+
+                <h2>
+                    Product Details
+                </h2>
+
+
+                <div
+                    id="productDetails">
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT SIDE QR -->
+
+            <div
+                id="productQRSection"
+                class="product-qr-section">
+
+                <h3>
+                    Product QR Code
+                </h3>
+
+                <p>
+                    Scan this QR code to verify
+                    the product.
+                </p>
+
+
+                <div id="productQR">
+                </div>
+
+
+                <p id="productQRLink">
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRANSFER -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Transfer Product Ownership
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                New Owner Address
+            </label>
+
+            <input
+                type="text"
+                id="newOwner"
+                placeholder="0x...">
+
+        </div>
+
+
+        <button
+            id="transferOwnership"
+            class="primary-button">
+
+            Transfer Ownership
+
+        </button>
+
+    </section>
+
+
+    <!-- STATUS -->
+
+    <section class="dashboard-card">
+
+        <h2>
+            Product Status Management
+        </h2>
+
+
+        <div class="hero-buttons">
+
+            <button
+                id="markAsSold"
+                class="primary-button"
+                type="button">
+
+                Mark as SOLD
+
+            </button>
+
+
+            <button
+                id="flagProduct"
+                class="secondary-button"
+                type="button">
+
+                Flag Product
+
+            </button>
+
+        </div>
+
+
+        <div id="transferResult">
+        </div>
+
+    </section>
+
+
+    <!-- OWNERSHIP HISTORY -->
+
+    <section
+        id="ownershipHistory"
+        class="ownership-history">
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <strong>BlockVerify</strong>
+
+    <br>
+
+    Supply Chain Ownership Management
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.1/dist/ethers.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="js/blockchain.js"></script>
+
+<script src="js/distributor.js"></script>
+
+</body>
+
+</html>

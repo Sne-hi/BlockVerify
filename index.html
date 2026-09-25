@@ -1,97 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BlockVerify | Product Authentication</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>BlockVerify | Blockchain Product Authentication</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
 
-        <div class="logo">
-            BlockVerify
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        Block<span>Verify</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html" class="active">
+            Home
+        </a>
+
+        <a href="manufacturer.html">
+            Manufacturer
+        </a>
+
+        <a href="distributor.html">
+            Distributor
+        </a>
+
+        <a href="verify.html">
+            Verify Product
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Secure Supply Chain
+            with <span>Blockchain</span>
+        </h1>
+
+        <p>
+            Track. Verify. Trust.
+            A transparent and secure supply chain
+            system using blockchain technology.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="manufacturer.html"
+               class="primary-button">
+
+                Get Started →
+
+            </a>
+
+            <a href="verify.html"
+               class="secondary-button hero-secondary">
+
+                Verify Product
+
+            </a>
+
         </div>
 
-        <button id="connectWallet">
-            Connect Wallet
-        </button>
-
-    </header>
+    </div>
 
 
-    <!-- Main Content -->
-    <main>
+    <!-- Security Visual -->
 
-        <section class="hero">
+    <div class="hero-visual">
 
-            <h1>
-                Blockchain-Based Product Authentication
-            </h1>
+        <div class="security-visual">
 
-            <p>
-                Verify product authenticity and track ownership
-                using blockchain technology.
-            </p>
+            <div class="security-screen">
 
-
-            <!-- Navigation Buttons -->
-            <div class="buttons">
-
-                <a href="manufacturer.html">
-                    <button>
-                        Manufacturer
-                    </button>
-                </a>
-
-
-                <a href="distributor.html">
-                    <button>
-                        Distributor
-                    </button>
-                </a>
-
-
-                <a href="verify.html">
-                    <button>
-                        Verify Product
-                    </button>
-                </a>
-
-
-                <!-- Blockchain Test Button -->
-                <button onclick="getProductCount()">
-                    Test Blockchain Connection
-                </button>
+                <div class="security-screen-icon">
+                    🔐
+                </div>
 
             </div>
 
-        </section>
+            <div class="security-badge one">
+                🔑 Secure Authentication
+            </div>
 
-    </main>
+            <div class="security-badge two">
+                • • • •
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- Footer -->
-    <footer>
+<!-- ================= FEATURES ================= -->
+
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+            Complete Product Traceability
+        </h2>
 
         <p>
-            © 2026 BlockVerify | Powered by Blockchain
+            BlockVerify connects manufacturers,
+            distributors and customers through
+            blockchain-based product records.
         </p>
 
-    </footer>
+    </div>
 
 
-    <!-- Ethers.js -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6/dist/ethers.umd.min.js"></script>
+    <div class="card-grid">
 
 
-    <!-- Our Blockchain JavaScript -->
-    <script src="js/blockchain.js"></script>
+        <!-- Product Registration -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📦
+            </div>
+
+            <h3>
+                Product Registration
+            </h3>
+
+            <p>
+                Register products on the blockchain
+                with unique product IDs and QR codes.
+            </p>
+
+        </div>
+
+
+        <!-- Ownership -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚚
+            </div>
+
+            <h3>
+                Track Ownership
+            </h3>
+
+            <p>
+                Track product movement across the
+                supply chain through ownership records.
+            </p>
+
+        </div>
+
+
+        <!-- Verification -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                ✓
+            </div>
+
+            <h3>
+                Verify Authenticity
+            </h3>
+
+            <p>
+                Scan QR codes to verify products
+                and inspect their blockchain records.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROCESS ================= -->
+
+<section class="section process-section">
+
+    <div class="section-header">
+
+        <h2>
+            How BlockVerify Works
+        </h2>
+
+    </div>
+
+
+    <div class="process-grid">
+
+        <div class="process-card">
+
+            <div class="process-number">
+                1
+            </div>
+
+            <h3>
+                Register
+            </h3>
+
+            <p>
+                Manufacturer registers the product
+                on the blockchain.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                2
+            </div>
+
+            <h3>
+                Generate QR
+            </h3>
+
+            <p>
+                A unique QR code is generated
+                for the product.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                3
+            </div>
+
+            <h3>
+                Transfer
+            </h3>
+
+            <p>
+                Ownership is transferred through
+                the supply chain.
+            </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+            <div class="process-number">
+                4
+            </div>
+
+            <h3>
+                Verify
+            </h3>
+
+            <p>
+                Customers scan the QR and
+                verify the blockchain record.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BLOCKCHAIN TEST ================= -->
+
+<section class="section">
+
+    <div class="blockchain-test-section">
+
+        <h2>
+            Test Blockchain Connection
+        </h2>
+
+        <p>
+            Check if your wallet is connected
+            to the Sepolia blockchain network.
+        </p>
+
+
+        <div class="blockchain-test-content">
+
+            <div class="connection-status">
+
+                <span class="connection-dot"></span>
+
+                Sepolia Testnet
+
+            </div>
+
+
+            <button
+                id="testConnectionButton"
+                class="primary-button"
+                type="button">
+
+                Test Connection
+
+            </button>
+
+        </div>
+
+        <p id="connectionResult"
+           class="connection-result">
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <strong>BlockVerify</strong>
+
+    <br>
+
+    Blockchain-Based Anti-Counterfeit
+    Product Authentication
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.1/dist/ethers.umd.min.js"></script>
+
+<script src="js/blockchain.js"></script>
+
+
+<script>
+
+    const testButton =
+        document.getElementById(
+            "testConnectionButton"
+        );
+
+    const result =
+        document.getElementById(
+            "connectionResult"
+        );
+
+
+    if (testButton) {
+
+        testButton.addEventListener(
+            "click",
+            async function () {
+
+                try {
+
+                    if (!window.ethereum) {
+
+                        result.innerText =
+                            "MetaMask is not installed.";
+
+                        return;
+                    }
+
+
+                    await window.ethereum.request({
+                        method:
+                            "eth_requestAccounts"
+                    });
+
+
+                    const provider =
+                        new ethers.BrowserProvider(
+                            window.ethereum
+                        );
+
+
+                    const network =
+                        await provider.getNetwork();
+
+
+                    result.innerText =
+                        "✓ Connected to Sepolia Testnet";
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+                    result.innerText =
+                        "Connection test failed.";
+
+                }
+
+            }
+        );
+
+    }
+
+</script>
 
 </body>
 

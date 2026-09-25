@@ -1,104 +1,59 @@
 async function registerProduct() {
 
+    if (!contract) {
+        alert("Please connect your wallet first.");
+        return;
+    }
+
+    const name =
+        document.getElementById("productName").value.trim();
+
+    const serialNumber =
+        document.getElementById("serialNumber").value.trim();
+
+    const batchNumber =
+        document.getElementById("batchNumber").value.trim();
+
+    const category =
+        document.getElementById("category").value.trim();
+
+    if (!name || !serialNumber || !batchNumber || !category) {
+        alert("Please fill all product details.");
+        return;
+    }
+
     try {
 
-        // Check wallet connection
-        if (!contract || !signer) {
+        const result =
+            document.getElementById("registrationResult");
 
-            alert("Please connect your MetaMask wallet first.");
+        result.innerText =
+            "Registering product on blockchain...";
 
-            return;
-        }
-
-
-        // Get values from the form
-        const name =
-            document.getElementById("productName").value.trim();
-
-        const serialNumber =
-            document.getElementById("serialNumber").value.trim();
-
-        const batchNumber =
-            document.getElementById("batchNumber").value.trim();
-
-        const category =
-            document.getElementById("category").value.trim();
-
-
-        // Validate fields
-        if (!name || !serialNumber || !batchNumber || !category) {
-
-            alert("Please fill in all product details.");
-
-            return;
-        }
-
-
-        // Show message
-        document.getElementById("result").innerHTML =
-            "Waiting for MetaMask confirmation...";
-
-
-        // Call smart contract
-        const transaction =
-            await contract.registerProduct(
-                name,
-                serialNumber,
-                batchNumber,
-                category
-            );
-
-
-        console.log("Transaction sent:", transaction.hash);
-
-
-        document.getElementById("result").innerHTML =
-            "Transaction submitted. Waiting for blockchain confirmation...";
-
-
-        // Wait for transaction confirmation
-        await transaction.wait();
-
-
-        console.log("Product registered successfully.");
-
-
-        // Get the latest product ID
-        const productId =
-            await contract.productCount();
-
-
-        console.log(
-            "New Product ID:",
-            productId.toString()
+        const tx = await contract.registerProduct(
+            name,
+            serialNumber,
+            batchNumber,
+            category
         );
 
+        await tx.wait();
 
-        // Display result
-        document.getElementById("result").innerHTML =
+        // Get the newly created product ID
+        const productCount =
+            await contract.productCount();
 
-            "<h3>Product Registered Successfully!</h3>" +
+        const productId =
+            Number(productCount);
 
-            "<p><strong>Product ID:</strong> " +
-            productId.toString() +
-            "</p>" +
+        result.innerHTML = `
+            <strong>Product registered successfully!</strong><br><br>
+            Product ID: ${productId}<br>
+            Status: <strong>REGISTERED</strong>
+        `;
 
-            "<p><strong>Product Name:</strong> " +
-            name +
-            "</p>" +
-
-            "<p><strong>Serial Number:</strong> " +
-            serialNumber +
-            "</p>" +
-
-            "<p><strong>Batch Number:</strong> " +
-            batchNumber +
-            "</p>" +
-
-            "<p><strong>Category:</strong> " +
-            category +
-            "</p>";
-
+        // Generate QR code
+        generateProductQR(productId);
 
         // Clear form
         document.getElementById("productName").value = "";
@@ -106,25 +61,103 @@ async function registerProduct() {
         document.getElementById("batchNumber").value = "";
         document.getElementById("category").value = "";
 
-
     } catch (error) {
 
-        console.error(
-            "Product registration error:",
-            error
-        );
+        console.error(error);
 
-
-        document.getElementById("result").innerHTML =
-            "Product registration failed.";
-
-
-        alert(
-            "Product registration failed:\n\n" +
-            (error.reason ||
-             error.shortMessage ||
-             error.message ||
-             error)
-        );
+        document.getElementById("registrationResult").innerText =
+            "Registration failed: " +
+            (error.reason || error.message);
     }
+}
+
+
+// ==========================================
+// Generate QR Code
+// ==========================================
+
+function generateProductQR(productId) {
+
+    const qrSection =
+        document.getElementById("qrSection");
+
+    const qrContainer =
+        document.getElementById("qrcode");
+
+    // Create verification URL
+    const qrUrl =
+        window.location.origin +
+        "/verify.html?id=" +
+        productId;
+
+    // Show QR section
+    qrSection.style.display = "block";
+
+    // Clear previous QR code
+    qrContainer.innerHTML = "";
+
+    // Create clickable link around QR code
+    const qrLink =
+        document.createElement("a");
+
+    qrLink.href = qrUrl;
+
+    qrLink.target = "_blank";
+
+    qrLink.title =
+        "Click to verify this product";
+
+    qrContainer.appendChild(qrLink);
+
+    // Generate QR code
+    new QRCode(qrLink, {
+        text: qrUrl,
+        width: 200,
+        height: 200
+    });
+
+    // Display clickable verification URL
+    document.getElementById("qrUrl").innerHTML = `
+        <a
+            href="${qrUrl}"
+            target="_blank"
+            class="qr-link"
+        >
+            ${qrUrl}
+        </a>
+    `;
+
+    // Store Product ID for download
+    document.getElementById("downloadQR").dataset.productId =
+        productId;
+}
+
+
+// ==========================================
+// Download QR Code
+// ==========================================
+
+function downloadQRCode() {
+
+    const productId =
+        document.getElementById("downloadQR").dataset.productId;
+
+    const qrImage =
+        document.querySelector("#qrcode img");
+
+    if (!qrImage) {
+        alert("QR code not available.");
+        return;
+    }
+
+    const link =
+        document.createElement("a");
+
+    link.href =
+        qrImage.src;
+
+    link.download =
+        `BlockVerify_Product_${productId}_QR.png`;
+
+    link.click();
 }

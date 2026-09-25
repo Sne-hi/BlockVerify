@@ -2,22 +2,24 @@ let provider;
 let signer;
 let contract;
 
-const CONTRACT_ADDRESS = "0x28d2B5b0CD9e3993BAb09c1E56f4Bc63a420d3Fe";
+const CONTRACT_ADDRESS = "0x561c423D3c6aCb08974632edA3f542Bd5A006530";
 
 const CONTRACT_ABI = [
     "function productCount() view returns (uint256)",
 
-    "function registerProduct(string name, string serialNumber, string batchNumber, string category)",
+    "function registerProduct(string,string,string,string)",
 
-    "function transferOwnership(uint256 productId, address newOwner)",
+    "function transferOwnership(uint256,address)",
 
-    "function getProduct(uint256 productId) view returns (uint256 id, string name, string serialNumber, string batchNumber, string category, address manufacturer, address currentOwner, bool registered, bool flagged)",
+    "function markAsSold(uint256)",
 
-    "function getOwnershipHistory(uint256 productId) view returns (tuple(address owner, uint256 timestamp)[])",
+    "function flagProduct(uint256)",
 
-    "function flagProduct(uint256 productId) view",
+    "function getProduct(uint256) view returns (tuple(uint256 id, string name, string serialNumber, string batchNumber, string category, address manufacturer, address currentOwner, bool registered, uint8 status))",
 
-    "function products(uint256) view returns (uint256 id, string name, string serialNumber, string batchNumber, string category, address manufacturer, address currentOwner, bool registered, bool flagged)"
+    "function getOwnershipHistory(uint256) view returns (tuple(address owner, uint256 timestamp)[])",
+
+    "function products(uint256) view returns (uint256 id, string name, string serialNumber, string batchNumber, string category, address manufacturer, address currentOwner, bool registered, uint8 status)"
 ];
 
 

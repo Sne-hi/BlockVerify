@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Verify Product | BlockVerify</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        Block<span>Verify</span>
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="manufacturer.html">
+            Manufacturer
+        </a>
+
+        <a href="distributor.html">
+            Distributor
+        </a>
+
+        <a href="verify.html"
+           class="active">
+
+            Verify Product
+
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- VERIFICATION -->
+
+<main class="verification-page">
+
+    <div class="verification-container">
+
+
+        <h1>
+            Product Verification
+        </h1>
+
+
+        <p class="verification-intro">
+
+            Scan the QR code on the physical product
+            to verify its blockchain record.
+
+        </p>
+
+
+        <!-- CAMERA -->
+
+        <section class="scanner-card">
+
+            <h2>
+                Scan Product QR Code
+            </h2>
+
+            <p>
+                Use your device camera to scan
+                the QR code attached to the product.
+            </p>
+
+
+            <button
+                id="startScanner"
+                class="primary-button"
+                type="button">
+
+                📷 Scan QR Code
+
+            </button>
+
+
+            <div
+                id="qr-reader"
+                style="display:none;">
+
+            </div>
+
+
+            <p
+                id="scannerMessage"
+                class="scanner-message">
+
+            </p>
+
+        </section>
+
+
+        <!-- MANUAL -->
+
+        <section class="manual-verification">
+
+            <h2>
+                Or Enter Product ID
+            </h2>
+
+
+            <div class="product-id-input">
+
+                <input
+                    type="number"
+                    id="productId"
+                    min="1"
+                    placeholder="Enter Product ID">
+
+
+                <button
+                    id="verifyButton"
+                    class="primary-button"
+                    type="button">
+
+                    Verify Product
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <p id="qrMessage"></p>
+
+
+        <!-- RESULT -->
+
+        <div
+            id="verificationResult">
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer class="footer">
+
+    <strong>BlockVerify</strong>
+
+    <br>
+
+    Blockchain Product Authentication
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.1/dist/ethers.umd.min.js"></script>
+
+<script src="https://unpkg.com/html5-qrcode"
+        type="text/javascript">
+</script>
+
+<script src="js/blockchain.js"></script>
+
+<script src="js/verify.js"></script>
+
+</body>
+
+</html>

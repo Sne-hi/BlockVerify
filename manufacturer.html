@@ -5,182 +5,213 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>BlockVerify | Manufacturer</title>
+    <title>Manufacturer | BlockVerify</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+          href="css/style.css">
 
 </head>
 
-
 <body>
 
-    <header>
 
-        <div class="logo">
-            BlockVerify
-        </div>
+<!-- NAVBAR -->
 
-        <button id="connectWallet">
-            Connect Wallet
-        </button>
+<header class="navbar">
 
-    </header>
+    <a href="index.html" class="logo">
+        Block<span>Verify</span>
+    </a>
 
+    <nav class="nav-links">
 
-    <main>
+        <a href="index.html">
+            Home
+        </a>
 
-        <section class="manufacturer">
+        <a href="manufacturer.html"
+           class="active">
+            Manufacturer
+        </a>
 
-            <h1>
-                Manufacturer Dashboard
-            </h1>
+        <a href="distributor.html">
+            Distributor
+        </a>
 
-            <p class="subtitle">
-                Register a new product on the blockchain
-            </p>
+        <a href="verify.html">
+            Verify Product
+        </a>
 
+    </nav>
 
-            <!-- Registration Form -->
+    <button
+        id="connectWallet"
+        class="nav-button">
 
-            <div class="form-container">
+        Connect Wallet
 
-                <h2>
-                    Register Product
-                </h2>
+    </button>
 
-
-                <label for="productName">
-                    Product Name
-                </label>
-
-                <input
-                    type="text"
-                    id="productName"
-                    placeholder="Enter product name"
-                >
+</header>
 
 
-                <label for="serialNumber">
-                    Serial Number
-                </label>
+<!-- MAIN -->
 
-                <input
-                    type="text"
-                    id="serialNumber"
-                    placeholder="Enter serial number"
-                >
+<main class="page-container">
 
 
-                <label for="batchNumber">
-                    Batch Number
-                </label>
+    <div class="page-title">
 
-                <input
-                    type="text"
-                    id="batchNumber"
-                    placeholder="Enter batch number"
-                >
-
-
-                <label for="category">
-                    Product Category
-                </label>
-
-                <input
-                    type="text"
-                    id="category"
-                    placeholder="Enter product category"
-                >
-
-
-                <button
-                    class="primary-button"
-                    onclick="registerProduct()"
-                >
-                    Register Product
-                </button>
-
-            </div>
-
-
-            <!-- Registration Result -->
-
-            <div
-                id="result"
-                class="result"
-            >
-            </div>
-
-
-            <!-- QR Code Section -->
-
-            <div
-                id="qrSection"
-                class="qr-section"
-                style="display: none;"
-            >
-
-                <h2>
-                    Product QR Code
-                </h2>
-
-                <p>
-                    Scan this QR code to verify the product.
-                </p>
-
-
-                <div id="qrcode"></div>
-
-
-                <p id="qrUrl">
-                </p>
-
-
-                <button
-                    id="downloadQR"
-                    class="primary-button"
-                    onclick="downloadQRCode()"
-                >
-                    Download QR Code
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer>
+        <h1>
+            Manufacturer Dashboard
+        </h1>
 
         <p>
-            © 2026 BlockVerify | Powered by Blockchain
+            Register products and generate unique
+            blockchain verification QR codes.
         </p>
 
-    </footer>
+    </div>
 
 
-    <!-- ethers.js -->
+    <!-- REGISTRATION -->
 
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6/dist/ethers.umd.min.js"></script>
+    <section class="dashboard-card">
 
-
-    <!-- QR Code Library -->
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-
-    <!-- Blockchain connection -->
-
-    <script src="js/blockchain.js"></script>
+        <h2>
+            Register New Product
+        </h2>
 
 
-    <!-- Manufacturer functionality -->
+        <div class="form-group">
 
-    <script src="js/manufacturer.js"></script>
+            <label>
+                Product Name
+            </label>
 
+            <input
+                type="text"
+                id="productName"
+                placeholder="Enter product name">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Serial Number
+            </label>
+
+            <input
+                type="text"
+                id="serialNumber"
+                placeholder="Enter serial number">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Batch Number
+            </label>
+
+            <input
+                type="text"
+                id="batchNumber"
+                placeholder="Enter batch number">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Category
+            </label>
+
+            <input
+                type="text"
+                id="category"
+                placeholder="Enter product category">
+
+        </div>
+
+
+        <button
+            class="primary-button"
+            onclick="registerProduct()">
+
+            Register Product
+
+        </button>
+
+
+        <div id="registrationResult"
+             class="verification-card">
+
+        </div>
+
+    </section>
+
+
+    <!-- QR -->
+
+    <section id="qrSection"
+             style="display:none;">
+
+        <h2>
+            Product QR Code
+        </h2>
+
+        <p>
+            Click the QR code or verification
+            link to verify the product.
+        </p>
+
+
+        <div id="qrcode"></div>
+
+
+        <p id="qrUrl"></p>
+
+
+        <button
+            id="downloadQR"
+            class="primary-button"
+            onclick="downloadQRCode()">
+
+            Download QR Code
+
+        </button>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <strong>BlockVerify</strong>
+
+    <br>
+
+    Manufacturer Product Registration
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.1/dist/ethers.umd.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="js/blockchain.js"></script>
+
+<script src="js/manufacturer.js"></script>
 
 </body>
 
